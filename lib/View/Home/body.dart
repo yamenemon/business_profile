@@ -17,17 +17,20 @@ class Body extends StatelessWidget {
           print(controller.selectedIndex);
           Offset value = Offset(0, -1.0);
           switch (controller.selectedIndex) {
-            case 1:
+            case 0:
               value = Offset(0, 1.0);
               break;
-            case 2:
+            case 1:
               value = Offset(0.5, 1.0);
               break;
-            case 3:
+            case 2:
               value = Offset(1.0, 0);
               break;
-            case 4:
+            case 3:
               value = Offset(0, -1.0);
+              break;
+            case 3:
+              value = Offset(0.5, -1.0);
               break;
           }
 
@@ -38,7 +41,7 @@ class Body extends StatelessWidget {
                 child: Container(
                   width: 700.w,
                   height: MediaQuery.of(context).size.height - 20.h,
-                  color: controller.selectedIndex == 1
+                  color: controller.selectedIndex == 0
                       ? Colors.transparent
                       : Colors.white.withOpacity(0.85),
                   child: Center(
