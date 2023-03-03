@@ -3,6 +3,7 @@ import 'package:business_profile/View/Home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -41,7 +42,25 @@ class Body extends StatelessWidget {
                       ? Colors.transparent
                       : Colors.white.withOpacity(0.85),
                   child: Center(
-                    child: Text("Khaliful islam"),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Khaliful islam ",
+                          style: GoogleFonts.lato(
+                              fontSize: 50.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(230, 210, 134, 106)),
+                        ),
+                        Text(
+                          "Khaliful islam ",
+                          style: GoogleFonts.lato(
+                              fontSize: 50.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               )

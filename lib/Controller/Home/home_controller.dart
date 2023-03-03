@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomeController extends ChangeNotifier {
-  int selectedIndex = 0;
+  int selectedIndex = 1;
 
   HomeController() {
     print("object");
