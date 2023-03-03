@@ -53,9 +53,9 @@ class Body extends StatelessWidget {
                               color: Color.fromARGB(230, 210, 134, 106)),
                         ),
                         Text(
-                          "Khaliful islam ",
+                          "Mobile Application developer",
                           style: GoogleFonts.lato(
-                              fontSize: 50.sp,
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 0, 0, 0)),
                         ),

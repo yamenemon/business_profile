@@ -3,6 +3,7 @@ import 'package:business_profile/View/Home/body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final homeControllerProvider =
     ChangeNotifierProvider((ref) => HomeController());
@@ -13,7 +14,6 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
       body: Consumer(
         builder: (_, WidgetRef ref, __) {
           final controller = ref.watch(homeControllerProvider);
@@ -31,51 +31,67 @@ class HomeView extends StatelessWidget {
                 children: [
                   Container(
                     width: 35.w,
-                    color: Colors.white,
+                    color: Colors.black,
                     child: Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(top: 8.0),
-                          child: Container(
-                            height: 130.h,
-                            color: Colors.amber,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20.r),
-                              child: Container(
-                                  height: 100,
-                                  width: 100,
-                                  color: Colors.orange),
-                            ),
+                          padding: EdgeInsets.only(top: 8.h),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                width: 30.w,
+                                height: 30.w,
+                                decoration: new BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: new DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('images/pp.jpeg'),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5.h,
+                              ),
+                              Text(
+                                "Khaliful Islam",
+                                textScaleFactor: 1.5,
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.lato(
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color.fromARGB(230, 210, 134, 106),
+                                ),
+                              )
+                            ],
                           ),
                         ),
-                        Text("Khaliful Islam"),
                         SizedBox(height: 50.h),
-                        GestureDetector(
-                          onTap: () {
-                            controller.updateIndex(1);
-                          },
-                          child: Container(height: 85.h, color: Colors.cyan),
+                        Divider(color: Colors.grey),
+                        MenuButtons(
+                          controller: controller,
+                          clickedIndex: 0,
                         ),
-                        Divider(),
-                        GestureDetector(
-                          onTap: () {
-                            controller.updateIndex(2);
-                          },
-                          child: Container(height: 85.h, color: Colors.amber),
+                        Divider(color: Colors.grey),
+                        MenuButtons(
+                          controller: controller,
+                          clickedIndex: 1,
                         ),
-                        Divider(),
-                        GestureDetector(
-                          onTap: () {
-                            controller.updateIndex(3);
-                          },
-                          child: Container(height: 85.h, color: Colors.green),
+                        Divider(color: Colors.grey),
+                        MenuButtons(
+                          controller: controller,
+                          clickedIndex: 2,
                         ),
-                        Divider(),
-                        GestureDetector(
-                          onTap: () {
-                            controller.updateIndex(4);
-                          },
-                          child: Container(height: 85.h, color: Colors.yellow),
+                        Divider(color: Colors.grey),
+                        MenuButtons(
+                          controller: controller,
+                          clickedIndex: 3,
+                        ),
+                        Divider(color: Colors.grey),
+                        MenuButtons(
+                          controller: controller,
+                          clickedIndex: 4,
                         ),
                       ],
                     ),
@@ -91,6 +107,52 @@ class HomeView extends StatelessWidget {
             ]),
           );
         },
+      ),
+    );
+  }
+}
+
+class MenuButtons extends StatelessWidget {
+  const MenuButtons({
+    super.key,
+    required this.controller,
+    required this.clickedIndex,
+  });
+
+  final HomeController controller;
+  final int clickedIndex;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        controller.updateIndex(clickedIndex);
+      },
+      child: Container(
+        height: 50.h,
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.home_work,
+              color: Colors.grey,
+              size: 5.w,
+            ),
+            SizedBox(
+              height: 5.h,
+            ),
+            Text(
+              controller.menusItem[clickedIndex],
+              textAlign: TextAlign.center,
+              style: GoogleFonts.lato(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w500,
+                color: Colors.grey,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
