@@ -1,0 +1,8 @@
+{
+    "age": 29,
+    "residence": "USA",
+    "address": "88 Some Street, Some Town",
+    "email": "email@example.com",
+    "phone": "+0123 123 456 789",
+    "skype": "alex.smith"
+}

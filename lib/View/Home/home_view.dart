@@ -47,7 +47,7 @@ class HomeView extends StatelessWidget {
                         child: DefaultTextStyle(
                           style: GoogleFonts.lato(
                             fontSize: 14.sp,
-                            color: Colors.black,
+                            color: templateGrey,
                             fontWeight: FontWeight.w400,
                           ),
                           child: AnimatedTextKit(

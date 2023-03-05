@@ -36,7 +36,7 @@ class Body extends StatelessWidget {
 
           return controller.selectedIndex == 0
               ? HomeView(controller: controller, value: value)
-              : AboutMe(controller: controller, value: value);
+              : AboutMe(value: value);
         }),
       ),
     );
