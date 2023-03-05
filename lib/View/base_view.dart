@@ -1,5 +1,7 @@
 import 'package:business_profile/Controller/Home/home_controller.dart';
-import 'package:business_profile/View/Home/body.dart';
+import 'package:business_profile/View/body.dart';
+import 'package:business_profile/View/menu_buttons.dart';
+import 'package:business_profile/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,7 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 final homeControllerProvider =
     ChangeNotifierProvider((ref) => HomeController());
 
-class HomeView extends StatelessWidget {
+class BaseView extends StatelessWidget {
   // HomeView({super.key});
 
   @override
@@ -19,7 +21,7 @@ class HomeView extends StatelessWidget {
           final controller = ref.watch(homeControllerProvider);
           return Container(
             width: MediaQuery.of(context).size.width,
-            color: Colors.red,
+            color: Colors.transparent,
             child: Stack(children: [
               Image.asset(
                 'images/bg.jpg',
@@ -31,7 +33,7 @@ class HomeView extends StatelessWidget {
                 children: [
                   Container(
                     width: 35.w,
-                    color: Colors.black,
+                    color: primaryColor,
                     child: Column(
                       children: [
                         Padding(
@@ -41,13 +43,26 @@ class HomeView extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Container(
-                                width: 30.w,
-                                height: 30.w,
                                 decoration: new BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: new DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage('images/pp.jpeg'),
+                                  color: Colors.white,
+                                  // shape: BoxShape.circle,
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(10.0),
+                                      bottomLeft: Radius.circular(10.0)),
+                                ),
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      top: 10, left: 10, right: 10, bottom: 10),
+                                  width: 25.w,
+                                  height: 25.w,
+                                  padding: EdgeInsets.all(5.w),
+                                  decoration: new BoxDecoration(
+                                    color: Colors.white,
+                                    shape: BoxShape.circle,
+                                    image: new DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage('images/pp.jpeg'),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -61,34 +76,49 @@ class HomeView extends StatelessWidget {
                                 style: GoogleFonts.lato(
                                   fontSize: 15.sp,
                                   fontWeight: FontWeight.w400,
-                                  color: Color.fromARGB(230, 210, 134, 106),
+                                  color: Colors.white,
                                 ),
                               )
                             ],
                           ),
                         ),
                         SizedBox(height: 50.h),
-                        Divider(color: Colors.grey),
+                        Divider(
+                          color: Colors.grey,
+                          height: 1,
+                        ),
                         MenuButtons(
                           controller: controller,
                           clickedIndex: 0,
                         ),
-                        Divider(color: Colors.grey),
+                        Divider(
+                          color: Colors.grey,
+                          height: 1,
+                        ),
                         MenuButtons(
                           controller: controller,
                           clickedIndex: 1,
                         ),
-                        Divider(color: Colors.grey),
+                        Divider(
+                          color: Colors.grey,
+                          height: 2,
+                        ),
                         MenuButtons(
                           controller: controller,
                           clickedIndex: 2,
                         ),
-                        Divider(color: Colors.grey),
+                        Divider(
+                          color: Colors.grey,
+                          height: 2,
+                        ),
                         MenuButtons(
                           controller: controller,
                           clickedIndex: 3,
                         ),
-                        Divider(color: Colors.grey),
+                        Divider(
+                          color: Colors.grey,
+                          height: 2,
+                        ),
                         MenuButtons(
                           controller: controller,
                           clickedIndex: 4,
@@ -107,52 +137,6 @@ class HomeView extends StatelessWidget {
             ]),
           );
         },
-      ),
-    );
-  }
-}
-
-class MenuButtons extends StatelessWidget {
-  const MenuButtons({
-    super.key,
-    required this.controller,
-    required this.clickedIndex,
-  });
-
-  final HomeController controller;
-  final int clickedIndex;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        controller.updateIndex(clickedIndex);
-      },
-      child: Container(
-        height: 50.h,
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.home_work,
-              color: Colors.grey,
-              size: 5.w,
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            Text(
-              controller.menusItem[clickedIndex],
-              textAlign: TextAlign.center,
-              style: GoogleFonts.lato(
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w500,
-                color: Colors.grey,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
