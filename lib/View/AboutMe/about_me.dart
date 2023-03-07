@@ -52,8 +52,8 @@ class AboutMe extends StatelessWidget {
                                   ),
                                   child: Container(
                                     margin: EdgeInsets.all(10),
-                                    width: 90.w,
-                                    height: 90.w,
+                                    width: 80.w,
+                                    height: 80.w,
                                     padding: EdgeInsets.all(5.w),
                                     decoration: new BoxDecoration(
                                       color: Colors.white,
@@ -67,8 +67,8 @@ class AboutMe extends StatelessWidget {
                                 ),
                                 Container(
                                   margin: EdgeInsets.all(10),
-                                  width: 90.w,
-                                  height: 90.w,
+                                  width: 80.w,
+                                  height: 80.w,
                                   child: RichText(
                                     textAlign: TextAlign.justify,
                                     text: TextSpan(

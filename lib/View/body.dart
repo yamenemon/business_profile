@@ -9,7 +9,8 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10.h),
+      padding:
+          EdgeInsets.only(left: 10.w, top: 15.h, bottom: 15.h, right: 15.w),
       child: Container(
         color: Colors.transparent,
         child: Consumer(builder: (_, WidgetRef ref, __) {
